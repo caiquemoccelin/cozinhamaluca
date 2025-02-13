@@ -7,13 +7,18 @@ public class Geral : MonoBehaviour
     public Text placarJogadorTexto, recordeTexto;
     public AudioSource somPontoGanho;
 
+    public GameObject telaBoasVindas, telaGameOver;
+    public ControladorVoador objetoVoador;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         placarJogadorNum = 0;
-        recordeNum = 0;
-
+        // recordeNum = 0;
         AtualizarTextoPlacar();
+
+        Time.timeScale = 0;
     }
     public void MarcarPonto()
     {
@@ -34,8 +39,23 @@ public class Geral : MonoBehaviour
     }
 
 
+     public void ComecarJogo()
+    {
+        //"Descongelar" o tempo
+        Time.timeScale = 1;
 
+        // Sumir com a tela de Boas Vindas ou a de Game Over
+        telaBoasVindas.SetActive(false);
+        telaGameOver.SetActive(false);
 
+        // Voltar o objeto voador a sua posição inicial
+        objetoVoador.deslocamentoABS = objetoVoador.deslocamentoObjeto;
+        objetoVoador.posicaoOBJ.x = objetoVoador.posInicialX;
+     
+        // Zerar o placar
+        placarJogadorNum = 0;
+        AtualizarTextoPlacar();
+    }
 
 
 }
