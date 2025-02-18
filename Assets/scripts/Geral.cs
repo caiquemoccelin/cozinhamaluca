@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Geral : MonoBehaviour
@@ -39,7 +40,7 @@ public class Geral : MonoBehaviour
     }
 
 
-     public void ComecarJogo()
+    public void ComecarJogo()
     {
         //"Descongelar" o tempo
         Time.timeScale = 1;
@@ -51,11 +52,15 @@ public class Geral : MonoBehaviour
         // Voltar o objeto voador a sua posição inicial
         objetoVoador.deslocamentoABS = objetoVoador.deslocamentoObjeto;
         objetoVoador.posicaoOBJ.x = objetoVoador.posInicialX;
-     
+
         // Zerar o placar
         placarJogadorNum = 0;
         AtualizarTextoPlacar();
     }
 
+    public void CarregarCena(string nomeDaCena)
+    {
+      SceneManager.LoadScene(nomeDaCena);
 
+    }
 }
